@@ -1,0 +1,21 @@
+.github/workflows/tests.yml
+  s_5bad3094f7bc65::t_34a097f6ef646a 24,34-35,37-38
+README.md
+  s_5bad3094f7bc65::t_8fbb06910e8f23 3,15,29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "08a08a13dc12b60c83f2d5f871e62f36dcac0197",
+  "prompts": {},
+  "sessions": {
+    "s_5bad3094f7bc65": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c8058ad5-2c38-4556-995e-6d27935e4326",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
