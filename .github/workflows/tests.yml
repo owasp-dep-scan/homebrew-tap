@@ -21,6 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-15, macos-15-intel, ubuntu-24.04, ubuntu-24.04-arm]
+        formula: [dep-scan, blint]
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
@@ -30,9 +31,8 @@ jobs:
       - name: Style
         run: brew style owasp-dep-scan/tap
       - name: Install and test
+        env:
+          FORMULA: owasp-dep-scan/tap/${{ matrix.formula }}
         run: |
-          set -euo pipefail
-          for formula in dosai blint dep-scan; do
-            brew install "owasp-dep-scan/tap/${formula}"
-            brew test "owasp-dep-scan/tap/${formula}"
-          done
+          brew install "$FORMULA"
+          brew test "$FORMULA"

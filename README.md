@@ -1,19 +1,18 @@
 # OWASP dep-scan Homebrew Tap
 
-Homebrew formulae for the [OWASP dep-scan](https://github.com/owasp-dep-scan) tools.
+Homebrew formulae for the [OWASP dep-scan](https://github.com/owasp-dep-scan) tools. A `dosai` formula follows with Dosai 5.0.0, the first release whose self-contained build analyzes source without a .NET installation.
 
 | Formula    | Command   | Description                                                                                                     |
 | ---------- | --------- | --------------------------------------------------------------------------------------------------------------- |
 | `dep-scan` | `depscan` | [dep-scan](https://github.com/owasp-dep-scan/dep-scan): security and risk audit for project dependencies and container images. |
 | `blint`    | `blint`   | [blint](https://github.com/owasp-dep-scan/blint): binary linter and SBOM generator for ELF, PE and Mach-O executables.          |
-| `dosai`    | `dosai`   | [Dosai](https://github.com/owasp-dep-scan/dosai): .NET source and assembly inspector for call graphs, data flows and crypto.    |
 
 ## Usage
 
 ```bash
 brew tap owasp-dep-scan/tap
 brew trust --tap owasp-dep-scan/tap   # only needed if HOMEBREW_REQUIRE_TAP_TRUST is set
-brew install dep-scan blint dosai
+brew install dep-scan blint
 ```
 
 Or install one formula without tapping first, for example `brew install owasp-dep-scan/tap/dep-scan`.
@@ -27,5 +26,5 @@ macOS on Apple Silicon and Intel, and Linux (glibc) on x86_64 and arm64. Every f
 A scheduled workflow moves each formula to its project's latest release (prereleases are skipped). To pick up a new release:
 
 ```bash
-brew update && brew upgrade dep-scan blint dosai
+brew update && brew upgrade dep-scan blint
 ```
