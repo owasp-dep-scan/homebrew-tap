@@ -1,0 +1,40 @@
+name: Update formulae
+
+# Moves every formula to its project's latest release (prereleases excluded). Polling from the
+# tap keeps the projects free of a cross-repository token; run it by hand after a release to
+# skip the wait.
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Update formulae to the latest releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for formula in Formula/*.rb; do
+            update=$(python3 -I .github/scripts/update_formula.py "$formula")
+            if [ -n "$update" ]; then
+              git commit -q -m "$update" -- "$formula"
+              echo "Updated $update"
+            fi
+          done
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main

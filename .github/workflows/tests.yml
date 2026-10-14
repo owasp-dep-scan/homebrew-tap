@@ -1,0 +1,38 @@
+name: Test formulae
+
+# Installs and tests every formula on each platform its binaries ship for. Formula updates pushed
+# by the update workflow do not trigger this (GITHUB_TOKEN pushes start no workflows), so run it
+# by hand after one when needed.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel, ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@eb02c69dbabdb66ff183c614f4ce7ab3c077592c  # main
+      - name: Style
+        run: brew style owasp-dep-scan/tap
+      - name: Install and test
+        run: |
+          set -euo pipefail
+          for formula in dosai blint dep-scan; do
+            brew install "owasp-dep-scan/tap/${formula}"
+            brew test "owasp-dep-scan/tap/${formula}"
+          done
