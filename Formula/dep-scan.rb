@@ -1,29 +1,29 @@
 class DepScan < Formula
   desc "Security and risk audit for project dependencies and container images"
   homepage "https://github.com/owasp-dep-scan/dep-scan"
-  version "6.3.1"
+  version "6.3.2"
   license "MIT"
 
   # Single-file PyInstaller builds with a bundled cdxgen, so neither Python nor Node.js is needed.
   on_macos do
     on_arm do
       url "https://github.com/owasp-dep-scan/dep-scan/releases/download/v#{version}/depscan-darwin-arm64"
-      sha256 "f79c591c5983aecbc10575ab6a0cde6c2333927d6742f488e680c5431293086f"
+      sha256 "e8e551f8dfb4b9497d8ffaf223f531a91b06fb371ae624c771b858b5b18b216b"
     end
     on_intel do
       url "https://github.com/owasp-dep-scan/dep-scan/releases/download/v#{version}/depscan-darwin-amd64"
-      sha256 "23bbce49b726a16d5adccc116229e10c720296743267d01589d8a486e8313bce"
+      sha256 "57bebc0d34f4fb2a4d97c82fc26c093420de1b28d70588e2015c2af24b982dd9"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/owasp-dep-scan/dep-scan/releases/download/v#{version}/depscan-linux-arm64"
-      sha256 "e3835937ea8bffa74278a2f3235dfab7a6d1a0ed6b608e9040ec8876a4031f2d"
+      sha256 "b70f9c22f94369b91a6dd31054df1615b9eab04387a7de4eb6b2873ae50b9608"
     end
     on_intel do
       url "https://github.com/owasp-dep-scan/dep-scan/releases/download/v#{version}/depscan-linux-amd64"
-      sha256 "8753a0850e3e5840c532d50fb81e1f287f249f7e89146e23de832f4f5ea2f93a"
+      sha256 "290cf634a8ab15c2a96355d1e46c5a488b669359fd82d789b63452073b8c7e4c"
     end
   end
 
