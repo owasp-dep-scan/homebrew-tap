@@ -1,29 +1,29 @@
 class Blint < Formula
   desc "Binary linter and SBOM generator for ELF, PE and Mach-O executables"
   homepage "https://github.com/owasp-dep-scan/blint"
-  version "4.1.0"
+  version "4.1.1"
   license "MIT"
 
   # Single-file PyInstaller builds: Python and blint's dependencies are inside the executable.
   on_macos do
     on_arm do
       url "https://github.com/owasp-dep-scan/blint/releases/download/v#{version}/blint-darwin-arm64"
-      sha256 "506e3d71105d79f3e3cf8469d711d4394917b35f95ba0b96aa38f3075ebdd870"
+      sha256 "89b061dce93fef8285f38abad42ed67a18109ee128ef7ff2a0c3912469f55823"
     end
     on_intel do
       url "https://github.com/owasp-dep-scan/blint/releases/download/v#{version}/blint-darwin-amd64"
-      sha256 "18f0108757ba3fa39c2b3b4e7e5f50e40b0ecaf421ff7c68c57987467f9a24e3"
+      sha256 "47b1e433e1bc086b5240b15ba98891952ee14b74cf7d8c4d62564ccff5c10b53"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/owasp-dep-scan/blint/releases/download/v#{version}/blint-linux-arm64"
-      sha256 "14d228a34ad6b0f345dc7b1efaacaccdb48b96f78f02ee6b39f0afba82a2f4b9"
+      sha256 "09c75925f94c15e971af7a97bd70d3bf0dfd40cf92a24efa07e63c2bbe4380f7"
     end
     on_intel do
       url "https://github.com/owasp-dep-scan/blint/releases/download/v#{version}/blint-linux-amd64"
-      sha256 "d09ef80129bd1395b9bb6b0025a08dd92274b0734cd2340e702f6565ca24c5ff"
+      sha256 "a61450fd408ccc4b9a1114eb50714b3c6485b9adc3bfd6989925f66eec3f21d3"
     end
   end
 
